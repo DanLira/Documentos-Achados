@@ -1,0 +1,138 @@
+﻿@model PagedList.IPagedList<ProjetoModeloDocumentosDDD.MVC.ViewModels.CnhViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Buscar";
+}
+@if (Session["LogarUserId"] != null || Session["LogarUserIdComun"] != null)
+{
+    <img src="~/Content/img/cnh.jpg" />
+
+    <h2 class="title text-center">Procure o seu CNH aqui</h2>
+
+
+    using (Html.BeginForm())
+    {
+        <p>
+
+            Procure pelo nome da pessoa @Html.TextBox("procurar")
+            <input type="submit" value="Procurar" class="btn btn-default" />
+
+        </p>
+
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nome Completo Da Pessoa", "Buscar", new { r = ViewBag.NomeParam })
+            </th>
+            <th>
+                @Html.DisplayName("Nome Da Mãe")
+            </th>
+            <th>
+                @Html.DisplayName("Nome Do Pai")
+            </th>
+            <th>
+                @Html.DisplayName("Data De Nascimento")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeMae)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datanascimento)
+                </td>
+                <td>
+                    @Html.ActionLink("Achei", "Email", new { id = item.CnhId })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div>
+        Pagina @Model.PageNumber de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Buscar", new { pagina = page }))
+
+    </div>
+}
+else
+{
+    <img src="~/Content/img/cnh.jpg" />
+
+    <h2 class="title text-center">Procure o seu CNH aqui</h2>
+
+    using (Html.BeginForm())
+    {
+        <p>
+
+            Procure pelo nome da pessoa @Html.TextBox("procurar")
+            <input type="submit" value="Procurar" class="btn btn-default" />
+
+        </p>
+
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nome Completo Da Pessoa", "Buscar", new { r = ViewBag.NomeParam })
+            </th>
+            <th>
+                @Html.DisplayName("Nome Da Mãe")
+            </th>
+            <th>
+                @Html.DisplayName("Nome Do Pai")
+            </th>
+            <th>
+                @Html.DisplayName("Data De Nascimento")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeMae)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datanascimento)
+                </td>
+                <td>
+                    @using (Html.BeginForm("LoginUser", "Home", FormMethod.Get))
+                    {
+                        @Html.AntiForgeryToken()
+                        Session["BuscarCnh"] = "AtivoCnh";
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div>
+        Pagina @Model.PageNumber de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Buscar", new { pagina = page }))
+
+    </div>
+}

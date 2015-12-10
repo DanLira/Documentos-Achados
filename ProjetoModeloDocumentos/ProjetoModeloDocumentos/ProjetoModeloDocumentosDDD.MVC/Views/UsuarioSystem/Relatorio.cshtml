@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Relatorio";
+
+}
+@if (Session["LogarUserId"] != null && Session["NivelUsuarioSystem"].ToString() == "1")
+{
+
+
+    if (@ViewBag.QtdRg == 0 && @ViewBag.QtdCpf == 0 && @ViewBag.QtdChh == 0)
+    {
+        <h2 class="title text-center">Não foi encontrado nenhum documento cadastrado</h2>
+        }
+        else
+        {
+            <h2 class="title text-center">Gráfico de Documentos</h2>
+        <body>
+            <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+        </body>
+        <script type="text/javascript" src="~/Scripts/jsapi.js"></script>
+        <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Documentos', 'Quantidade'],
+          ['RG', @ViewBag.QtdRg],
+          ['CPF',     @ViewBag.QtdCpf],
+          ['CNH', @ViewBag.QtdChh]
+
+        ]);
+
+        var qtd = @ViewBag.QtdRg+@ViewBag.QtdCpf+@ViewBag.QtdChh;
+
+        var options = {
+            title: 'Quantidade De Documentos ['+qtd+']',
+                    is3D: true,
+
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+
+
+        </script>
+
+    <h2 class="title text-center">@Html.ActionLink("Listar Todos Os Rg", "ListRg")</h2>
+    <h2 class="title text-center">@Html.ActionLink("Listar Todos Os Cpf", "ListCpf")</h2>
+    <h2 class="title text-center">@Html.ActionLink("Listar Todos Os Cnh", "ListCnh")</h2>
+
+
+        }
+
+
+}
+else
+{
+    <h2 class="title text-center">Login Obrigatorio</h2>
+}
+
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProjetoModeloDocumentosDDD.MVC.ViewModels.RgViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (Session["LogarUserIdComun"] != null)
+{
+    <div class="form-horizontal">
+
+        <h2 class="title text-center">Minhas postagens de RG</h2>
+        <img src="~/Content/img/rg.jpg" /><p>
+            <br />
+        <p>
+            @Html.ActionLink("Procurar RG", "Buscar")
+        </p>
+
+        <p>
+            @Html.ActionLink("Adicionar RG", "Create")
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeDaPessoCompleto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeMae)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomePai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datanascimento)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.UsuarioId.ToString() == Session["LogarUsuarioId"].ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeDaPessoCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeMae)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomePai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Datanascimento)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.RgId }) |
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.RgId }) |
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.RgId })
+                        </td>
+
+                    </tr>
+
+                }
+            }
+
+        </table>
+    </div>
+}
+else
+{
+        <text>Login Obrigatorio</text>
+        }

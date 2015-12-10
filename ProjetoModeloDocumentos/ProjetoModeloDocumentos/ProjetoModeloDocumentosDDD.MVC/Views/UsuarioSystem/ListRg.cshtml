@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<ProjetoModeloDocumentosDDD.MVC.ViewModels.RgViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "ListRg";
+}
+<h5 class="title text-center">@Html.ActionLink("Voltar Para os Relatorios", "Relatorio")</h5>
+
+<img src="~/Content/img/rg.jpg" />
+
+<h2 class="title text-center">Lista de Todos Rg</h2>
+
+    @using (Html.BeginForm())
+    {
+<p>
+
+    Procure pelo nome da pessoa @Html.TextBox("procurar")
+    <input type="submit" value="Procurar" class="btn btn-default" />
+
+</p>
+
+    }
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.ActionLink("Nome Completo Da Pessoa", "Buscar", new { r = ViewBag.NomeParam })
+        </th>
+        <th>
+            @Html.DisplayName("Nome Da Mãe")
+        </th>
+        <th>
+            @Html.DisplayName("Nome Do Pai")
+        </th>
+        <th>
+            @Html.DisplayName("Data De Nascimento")
+        </th>
+
+        <th>
+            @Html.DisplayName("Postado Por")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+       
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDaPessoCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeMae)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datanascimento)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                </td>
+                
+            </tr>
+        
+    }
+
+</table>
+
+<br />
+<div>
+    Pagina @Model.PageNumber de @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Buscar", new { pagina = page }))
+
+</div>
+

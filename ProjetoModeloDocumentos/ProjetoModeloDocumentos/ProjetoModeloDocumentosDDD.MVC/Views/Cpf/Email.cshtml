@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Email";
+}
+
+@if (Session["LogarUserIdComun"] != null)
+{
+    <h5 class="title text-center">E-Mail Enviando Para o Usuario Aguarde a Resposta </h5>
+
+
+    <h5 class="title text-center">@Html.ActionLink("Voltar ", "Buscar", "Cpf")</h5>
+}
+else
+{
+    <text>Login Obrigatorio</text>
+}

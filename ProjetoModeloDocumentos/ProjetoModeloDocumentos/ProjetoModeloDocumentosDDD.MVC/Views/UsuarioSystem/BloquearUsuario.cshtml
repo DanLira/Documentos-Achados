@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "BloquearUsuario";
+}
+
+@if (Session["LogarUserId"] != null && Session["NivelUsuarioSystem"].ToString() == "1")
+{
+
+    <h2 class="title text-center">Usuários Bloqueado</h2>
+
+
+    <h5 class="title text-center">@Html.ActionLink("Voltar para o relatório", "RelatorioUser", "UsuarioSystem")</h5>
+
+}
+else
+{
+<text>
+    Login Obrigatorio!
+</text>
+}

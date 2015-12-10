@@ -1,0 +1,52 @@
+﻿@model ProjetoModeloDocumentosDDD.MVC.ViewModels.UsuarioSystemViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Session["LogarUserId"] != null && Session["NivelUsuarioSystem"].ToString() == "1")
+{
+    
+
+   
+<h2>Details</h2>
+
+<div>
+    <h4>UsuarioSystemViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+     
+       
+
+       
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Session["IdAdminSystem"].ToString()}) |
+    @Html.ActionLink("Excluir", "Delete", new { id = Session["IdAdminSystem"].ToString() }) |
+    @Html.ActionLink("Inicio", "Index")
+</p>
+
+}
+else
+{
+    <text>
+        Login Obrigatorio!
+    </text>
+}

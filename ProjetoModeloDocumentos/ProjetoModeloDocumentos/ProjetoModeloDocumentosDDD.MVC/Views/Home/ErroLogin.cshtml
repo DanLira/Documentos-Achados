@@ -1,0 +1,45 @@
+﻿@model ProjetoModeloDocumentosDDD.MVC.ViewModels.UsuarioViewModel
+@{
+    ViewBag.Title = "ErroLogin";
+}
+
+<div id="excluiConta">Usuário e senha não conferem, tente novamente!</div><p></p>
+
+<h2 class="title text-center">Acesso ao sistema</h2>
+
+@using (Html.BeginForm("LoginUser", "Home", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-inline ">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Usuário", htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div><br />
+    <div class="form-inline ">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div><br />
+    <div class="form-inline ">
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+                <input type="submit" id="btnLogin" value="Acessar" />
+            </div><p>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

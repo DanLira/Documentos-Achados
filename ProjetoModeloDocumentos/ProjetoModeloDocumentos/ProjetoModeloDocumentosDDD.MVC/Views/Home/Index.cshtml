@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1>Perdeu o seu <span>CPF</span>?</h1>
+                                <h2></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <!--<button type="button" class="btn btn-default get">Get it now</button>-->
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="~/Cpf/Buscar"><img src="~/Content/img/cpfBanner.jpg" class="girl img-responsive" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1>Perdeu o seu <span>CNH</span>?</h1>
+                                <h2></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <!--<button type="button" class="btn btn-default get">Get it now</button>-->
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="~/Cnh/Buscar"><img src="~/Content/img/cnhBanner.jpg" class="girl img-responsive" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1>Perdeu o seu <span>RG</span>?</h1>
+                                <h2></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <!--<button type="button" class="btn btn-default get">Get it now</button>-->
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="~/Rg/Buscar"><img src="~/Content/img/rgBanner.jpg" class="girl img-responsive" alt="" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+<!-- services -->
+<section id="services" class="section pad-bot5 bg-white">
+    <div class="container">
+        <div class="row mar-bot5">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="section-header">
+                    <div class="wow bounceIn" data-animation-delay="7.8s">
+
+                        <h2 class="section-heading animated"><center>Procure aqui o seu documento perdido</center></h2>
+                        <h4><center>Navegue pelo documento específico abaixo:</center></h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mar-bot40">
+            <div class="col-lg-4">
+                <div class="wow bounceIn">
+                    <div class="align-center">
+
+                        <div class="wow rotateIn">
+                            <div class="service-col">
+                                <a href="~/Cpf/Buscar"><img src="~/Content/img/cpf.jpg"></a>
+                                <h2><a href="~/Cpf/Buscar">CPF</a></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="align-center">
+                    <div class="wow bounceIn">
+
+                        <div class="wow rotateIn">
+                            <div class="service-col">
+
+                                <a href="~/Cnh/Buscar"><img src="~/Content/img/cnh.jpg"></a>
+
+                                <h2><a href="~/Cnh/Buscar">CNH</a></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="align-center">
+                    <div class="wow bounceIn">
+                        <div class="service-col">
+                            <a href="~/Rg/Buscar"><img src="~/Content/img/rg.jpg"></a>
+                            <h2><a href="~/Rg/Buscar">RG</a></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

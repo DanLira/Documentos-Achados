@@ -1,0 +1,50 @@
+﻿@model ProjetoModeloDocumentosDDD.MVC.ViewModels.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@if (Session["LogarUserIdComun"] != null)
+{
+
+
+    <div class="col-sm-12">
+        <h2 class="title text-center">Minha conta</h2>
+
+    </div>
+    <div class="col-sm-9 padding-right">
+        <div class="product-details">
+            <!--product-details-->
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <center><img src="~/Content/img/semFoto.jpg" alt="" /></center>
+                </div>      
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information">
+                    <!--/product-information-->
+                    <img src="" alt="" />
+                    <h2>@Html.DisplayFor(model => model.Nome) @Html.DisplayFor(model => model.SobreNome)</h2>
+                    <p>Cpf: @Html.DisplayFor(model => model.Cpf)</p>
+                    <p>E-mail: @Html.DisplayFor(model => model.Email)</p>
+                    <p>Cep: @Html.DisplayFor(model => model.Cep)</p>
+                    <p>Telefone: @Html.DisplayFor(model => model.Telefone)<p>
+                    <br />
+                    <h3>@Html.ActionLink("Editar", "Edit", new { id = Session["LogarUsuarioId"].ToString() })                     
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
+                    @Html.ActionLink("Exlcuir", "Delete", new { id = Session["LogarUsuarioId"].ToString() })</h3>
+                     
+
+                </div><!--/product-information-->
+            </div>
+        </div><!--/product-details-->
+    </div>
+
+
+}
+else
+{
+    <text>
+        Login Obrigatorio!
+    </text>
+}

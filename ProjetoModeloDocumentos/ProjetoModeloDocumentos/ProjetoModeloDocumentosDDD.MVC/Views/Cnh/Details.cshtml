@@ -1,0 +1,72 @@
+﻿@model ProjetoModeloDocumentosDDD.MVC.ViewModels.CnhViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@if (Session["LogarUserIdComun"] != null)
+{
+
+
+    if (Model.UsuarioId.ToString() == Session["LogarUsuarioId"].ToString())
+    {
+
+        <div class="col-sm-12">
+            <h2 class="title text-center">Detalhes do documento</h2>
+
+        </div>
+        <div class="col-sm-9 padding-right">
+            <div class="product-details">
+                <!--product-details-->
+                <div class="col-sm-5">
+                    <div class="view-product">
+                        <center><img src="~/Content/img/cnh.jpg" alt="" /></center>
+                    </div>
+
+                </div>
+                <div class="col-sm-7">
+                    <div class="product-information">
+                        <!--/product-information-->
+                        <img src="" alt="" />
+                        <P>
+                            <b>Nome completo da pessoa</b><br />
+                            @Html.DisplayFor(model => model.NomeDaPessoaCompleto)
+                        </P>
+                        <p>
+                            <b>Nome da mãe</b><br />
+                            @Html.DisplayFor(model => model.NomeMae)
+                        </p>
+                        <P>
+                            <b>Nome do pai</b><br />
+                            @Html.DisplayFor(model => model.NomePai)
+                        </P>
+                        <p>
+                            <b>Data de nascimento</b><br />
+                            @Html.DisplayFor(model => model.Datanascimento)
+                        </p>
+                        <br />
+                        <h3>
+                            @Html.ActionLink("Alterar", "Edit", new { id = Model.CnhId })
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.ActionLink("Minhas postagens", "Index")
+                        </h3>
+
+                    </div><!--/product-information-->
+                </div>
+            </div><!--/product-details-->
+        </div>
+        
+    }
+    else
+    {
+            <text>Erro na página!</text>
+            }
+
+            }
+            else
+            {
+
+            <text>
+                Login Obrigatorio!
+            </text>
+            }

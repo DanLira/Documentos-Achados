@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<ProjetoModeloDocumentosDDD.MVC.ViewModels.CpfViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Buscar CPF";
+}
+
+@if (Session["LogarUserId"] != null || Session["LogarUserIdComun"] != null)
+{
+    <img src="~/Content/img/cpf.jpg" />
+
+    <h2 class="title text-center">Procure o seu Cpf aqui</h2>
+
+    using (Html.BeginForm())
+    {
+        <p>
+
+            Procure pelo nome da pessoa @Html.TextBox("procurar")
+            <input type="submit" value="Procurar" class="btn btn-default" />
+
+        </p>
+
+    }
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nome Completo Da Pessoa", "Buscar", new { r = ViewBag.NomeParam })
+            </th>
+            <th>
+                @Html.DisplayName("Data De Nascimento")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datanascimento)
+                </td>
+                <td>
+                    @Html.ActionLink("Achei", "Email", new { id = item.CpfId })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div>
+        Pagina @Model.PageNumber de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Buscar", new { pagina = page }))
+
+    </div>
+
+}
+else
+{
+
+    using (Html.BeginForm())
+    {
+        <img src="~/Content/img/cpf.jpg" />
+
+        <h2 class="title text-center">Procure o seu CPF aqui</h2>
+        <p>
+
+            Procure pelo nome da pessoa @Html.TextBox("procurar")
+            <input type="submit" value="Procurar" class="btn btn-default" />
+
+        </p>
+
+    }
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nome Completo Da Pessoa", "Buscar", new { r = ViewBag.NomeParam })
+            </th>
+            <th>
+                @Html.DisplayName("Data De Nascimento")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datanascimento)
+                </td>
+                <td>
+                    @using (Html.BeginForm("LoginUser", "Home", FormMethod.Get))
+                    {
+                        @Html.AntiForgeryToken()
+                        Session["BuscarCpf"] = "AtivoCpf";
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div>
+        Pagina @Model.PageNumber de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Buscar", new { pagina = page }))
+
+    </div>
+}

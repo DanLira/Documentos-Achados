@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProjetoModeloDocumentosDDD.MVC.ViewModels.UsuarioSystemViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["LogarUserId"] != null)
+{
+   
+
+<h2>Index</h2>
+if (Session["NivelUsuarioSystem"].ToString() == "1")
+ {
+     <p>
+         @Html.ActionLink("Create New", "Create")
+     </p>
+ }
+    <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senha)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senha)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+
+        @if(Session["NivelUsuarioSystem"].ToString() =="1")
+        {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.UsuarioSystemId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.UsuarioSystemId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.UsuarioSystemId})
+        </td>
+        }
+    </tr>
+}
+
+</table>
+
+}
+else
+{
+    <text>
+        Login Obrigatorio!
+    </text>
+}

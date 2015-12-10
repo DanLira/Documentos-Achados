@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "DesbloquearUsuario";
+}
+
+@if (Session["LogarUserId"] != null && Session["NivelUsuarioSystem"].ToString() == "1")
+{
+
+    <h2 class="title text-center">usuários Desbloqueado</h2>
+
+
+    <h5 class="title text-center">@Html.ActionLink("Voltar para o relatório", "RelatorioUser", "UsuarioSystem")</h5>
+
+
+
+}
+else
+{
+    <text>
+        Login Obrigatorio!
+    </text>
+}

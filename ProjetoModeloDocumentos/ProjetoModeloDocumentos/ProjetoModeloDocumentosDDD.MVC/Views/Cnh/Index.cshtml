@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ProjetoModeloDocumentosDDD.MVC.ViewModels.CnhViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["LogarUserIdComun"] != null)
+{
+
+    <div class="form-horizontal">
+
+        <h2 class="title text-center">Minhas postagens de CNH</h2>
+        <img src="~/Content/img/cnh.jpg" /><p>
+            <br />
+        <p>
+            @Html.ActionLink("Procurar CNH", "Buscar")
+        </p>
+
+        <p>
+            @Html.ActionLink("Adicionar CNH", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeDaPessoaCompleto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeMae)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomePai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datanascimento)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.UsuarioId.ToString() == Session["LogarUsuarioId"].ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeMae)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomePai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Datanascimento)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CnhId }) |
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.CnhId }) |
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.CnhId })
+
+                        </td>
+                    </tr>
+                }
+            }
+
+
+        </table>
+        </div>
+
+        }
+        else
+        {
+
+        <text>
+            Login Obrigatorio!
+        </text>
+        }
+

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                @if (Session["LogarUserIdComun"] != null)
+                                {
+                                    <li><a href="/Usuarios/Details/@Session["LogarUsuarioId"].ToString()"><i class="fa fa-user"></i> Olá @Session["LogarUserIdComun"].ToString()</a></li>
+
+                                }
+                                else
+                                             if (Session["LogarUserId"] != null)
+                                {
+                                    <li><a href="/UsuarioSystem/Details/@Session["IdAdminSystem"].ToString()"><i class="fa fa-user"></i> Olá @Session["LogarUserId"].ToString()</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#"><i class="fa fa-envelope"></i> contato@documentosachados.com.br</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="/Home/Index"><img src="~/Content/img/LogoDocumentosAchados.png" /></a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <div class="mainmenu pull-left">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/Home/Index"><!--<i class="fa fa-user"></i>-->Início</a></li>
+                                    @if (Session["LogarUserIdComun"] == null)
+                                    {
+                                        if (Session["LogarUserId"] != null)
+                                        {
+
+                                            <li class="dropdown">
+                                                <a href="#"><i class="fa fa-user"></i> @Session["LogarUserId"]</a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <br />
+                                                    <li><a href="/UsuarioSystem/Details/@Session["IdAdminSystem"].ToString()"><b>Minha conta</b></a></li>
+                                                    <hr />
+                                                    <li><a href="~/Home/LogOut"><b>Sair</b></a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a href="#">Relatórios</a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <br />
+                                                    <li><a href="/UsuarioSystem/Relatorio"><b>De documentos</b></a></li>
+                                                    <hr />
+                                                    <li><a href="/UsuarioSystem/RelatorioUser"><b>De usuários</b></a></li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="dropdownLogin">
+
+                                                <a href="#"><i class="fa fa-lock"></i>Login/Cadastro</a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <!--<li><h4>&nbsp;&nbsp;Acesso ao Sistema</h4></li>
+                                                    <li><input type="email" class="form-control" required="required" value="E-mail" onBlur="if(this.value=='')this.value='E-mail'" onFocus="if(this.value=='E-mail')this.value='' "></li>
+                                                    <li><input type="password" class="form-control" required="required" value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></li>
+                                                    <li><input type="submit" class="btn btn-primary pull-right" value="Acessar"></li>
+                                                    <li><a href="#">Esqueceu a senha</a>&nbsp;<span class="info">?</span></li>
+                                                    <hr />-->
+                                                    <br />
+                                                    <li><a href="/Home/LoginUser">&nbsp;&nbsp;&nbsp;&nbsp;<b>Acessar</b></a></li>
+                                                    <hr />
+                                                    <li><a href="/Usuarios/Create">&nbsp;&nbsp;&nbsp;&nbsp;<b>Cadastro grátis</b></a></li>
+                                                </ul>
+
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        if (Session["LogarUserIdComun"] != null)
+                                        {
+                                            <li class="dropdown">
+                                                <a href="#"><i class="fa fa-user"></i> @Session["UsuarioNome"]</a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <br />
+                                                    <li><a href="/Usuarios/Details/@Session["LogarUsuarioId"].ToString()"><b>Minha conta</b></a></li>
+                                                    <hr />
+
+                                                    <li><a href="~/Home/LogOut"><b>Sair</b></a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a href="#"> Postar documentos</a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <br />
+                                                    <li><a href="~/Cpf/Create"><b>CPF</b></a></li>
+                                                    <hr />
+
+                                                    <li><a href="~/Cnh/Create"><b>CNH</b></a></li>
+                                                    <hr />
+
+                                                    <li><a href="~/Rg/Create"><b>RG</b></a></li>
+                                                </ul>
+                                            </li>
+                                        }
+
+
+                                    }
+                                    <li><a href="/Home/Sobre"><!--<i class="fa fa-user"></i>-->Sobre</a></li>
+                                    <li><a href="/Home/Contact"><!--<i class="fa fa-envelope"></i>--> Contato</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+    </header><!--/header-->
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div class="header_top">
+        <footer id="footer">
+            <!--Footer-->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="col-sm-3">
+                            <div class="address">
+                                <a href="/Home/Index"><img src="~/Content/img/LogoDocumentosAchados.png" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-widget">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2></h2>
+                                <ul class="nav nav-pills nav-stacked"></ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2>Sistema</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/Home/LoginUser">Acessar</a></li>
+                                    <li><a href="/Usuarios/Create">Cadastrar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <a href="/Home/Index"><h2>Início</h2></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <a href="/Home/Sobre"><h2>Sobre</h2></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <a href="/Home/Contact"><h2>Contato</h2></a>
+                            </div>
+                        </div>
+
+                        <!--<div class="col-sm-3 col-sm-offset-1">
+                            <div class="single-widget">
+                                <h2>Lorem</h2>
+                                <form action="#" class="searchform">
+                                    <input type="text" placeholder="Your email address" />
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                    <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                                </form>
+                            </div>
+                        </div>-->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <p class="pull-left">Todos os direitos reservados.</p>
+                        <p class="pull-right">Desenvolvido por <span><a target="" href="#">Anonymous Experts</a></span></p>
+                    </div>
+                </div>
+            </div>
+
+        </footer><!--/Footer-->
+
+        <a id="scrollUp" href="#top" style="position:fixed; z-index:2147483647" ;>
+            <i class="fa fa-angle-up">
+            </i>
+        </a>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

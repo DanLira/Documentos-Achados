@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{0486E2C5-5AD6-4A31-82E0-885CC13FD7AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{4CCE7932-2CD3-4878-95A0-AEBC2E8DE3B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{F8B1A172-F7B6-469F-B231-B63B7E90B1C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{1F4BCA0C-C812-402C-8742-A931ED73B69D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{893D8DD0-6291-4FD0-92BE-07DDBD5432C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{E82AB69C-43DE-494D-87D7-3924E3B4FE9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Crosscutting", "4.2 - Crosscutting", "{9F539C52-C50F-460D-BB46-E41F8CE29ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoModeloDocumentosDDD.MVC", "ProjetoModeloDocumentosDDD.MVC\ProjetoModeloDocumentosDDD.MVC.csproj", "{0EF13D18-995D-488D-9835-9E80F9FE80C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoModeloDocumentosDDD.Domain", "ProjetoModeloDocumentosDDD.Domain\ProjetoModeloDocumentosDDD.Domain.csproj", "{17BD70C6-51A7-4BFE-B876-218D2E13B61C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoModeloDocumentosDDD.Infra.Data", "ProjetoModeloDocumentosDDD.Infra.Data\ProjetoModeloDocumentosDDD.Infra.Data.csproj", "{AA52B3B9-C79D-43A1-A9FC-E801481069BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoModeloDocumentosDDD.Application", "ProjetoModeloDocumentosDDD.Application\ProjetoModeloDocumentosDDD.Application.csproj", "{B72394A3-1DFC-4911-840E-5CB9A4362311}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EF13D18-995D-488D-9835-9E80F9FE80C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF13D18-995D-488D-9835-9E80F9FE80C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF13D18-995D-488D-9835-9E80F9FE80C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF13D18-995D-488D-9835-9E80F9FE80C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BD70C6-51A7-4BFE-B876-218D2E13B61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BD70C6-51A7-4BFE-B876-218D2E13B61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BD70C6-51A7-4BFE-B876-218D2E13B61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BD70C6-51A7-4BFE-B876-218D2E13B61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA52B3B9-C79D-43A1-A9FC-E801481069BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA52B3B9-C79D-43A1-A9FC-E801481069BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA52B3B9-C79D-43A1-A9FC-E801481069BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA52B3B9-C79D-43A1-A9FC-E801481069BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72394A3-1DFC-4911-840E-5CB9A4362311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72394A3-1DFC-4911-840E-5CB9A4362311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72394A3-1DFC-4911-840E-5CB9A4362311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72394A3-1DFC-4911-840E-5CB9A4362311}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E82AB69C-43DE-494D-87D7-3924E3B4FE9C} = {893D8DD0-6291-4FD0-92BE-07DDBD5432C4}
+		{9F539C52-C50F-460D-BB46-E41F8CE29ADC} = {893D8DD0-6291-4FD0-92BE-07DDBD5432C4}
+		{0EF13D18-995D-488D-9835-9E80F9FE80C0} = {0486E2C5-5AD6-4A31-82E0-885CC13FD7AF}
+		{17BD70C6-51A7-4BFE-B876-218D2E13B61C} = {1F4BCA0C-C812-402C-8742-A931ED73B69D}
+		{AA52B3B9-C79D-43A1-A9FC-E801481069BF} = {E82AB69C-43DE-494D-87D7-3924E3B4FE9C}
+		{B72394A3-1DFC-4911-840E-5CB9A4362311} = {F8B1A172-F7B6-469F-B231-B63B7E90B1C6}
+	EndGlobalSection
+EndGlobal

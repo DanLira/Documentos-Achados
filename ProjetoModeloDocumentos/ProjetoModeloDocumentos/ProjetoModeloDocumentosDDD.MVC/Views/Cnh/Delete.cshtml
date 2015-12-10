@@ -1,0 +1,73 @@
+﻿@model ProjetoModeloDocumentosDDD.MVC.ViewModels.CnhViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if (Session["LogarUserIdComun"] != null)
+{
+
+
+    if (Model.UsuarioId.ToString() == Session["LogarUsuarioId"].ToString())
+    {
+        <div id="excluiConta"> Deseja realmente excluir este CNH?</div><p></p>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomeDaPessoaCompleto)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NomeDaPessoaCompleto)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomeMae)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NomeMae)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomePai)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NomePai)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Datanascimento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Datanascimento)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /><p><br /><br />
+    @Html.ActionLink("Minhas postagens", "Index")
+</div>
+            }
+        </div>
+    }
+    else
+    {
+    <text>Erro na página!</text>
+ }
+
+}
+else
+{
+
+    <text>
+        Login Obrigatorio!
+    </text>
+}

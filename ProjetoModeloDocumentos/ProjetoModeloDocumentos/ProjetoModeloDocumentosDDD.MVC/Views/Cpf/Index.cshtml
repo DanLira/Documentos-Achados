@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProjetoModeloDocumentosDDD.MVC.ViewModels.CpfViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Session["LogarUserIdComun"] != null)
+{
+
+    <div class="form-horizontal">
+
+        <h2 class="title text-center">Minhas postagens de CPF</h2>
+        <img src="~/Content/img/cpf.jpg" /><p>
+            <br />
+        <p>
+            @Html.ActionLink("Procurar CPF", "Buscar")
+        </p>
+
+        <p>
+            @Html.ActionLink("Adicionar CPF", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeDaPessoaCompleto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datanascimento)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.UsuarioId.ToString() == Session["LogarUsuarioId"].ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeDaPessoaCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Datanascimento)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CpfId }) |
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.CpfId }) |
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.CpfId })
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+        </div>
+
+
+        }
+        else
+        {
+
+        <text>
+            Login Obrigatorio!
+        </text>
+        }

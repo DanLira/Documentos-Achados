@@ -1,0 +1,133 @@
+﻿
+@model PagedList.IPagedList<ProjetoModeloDocumentosDDD.MVC.ViewModels.UsuarioViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "RelatorioUser";
+}
+
+
+@if (Session["LogarUserId"] != null && Session["NivelUsuarioSystem"].ToString() == "1")
+{
+
+    if (@ViewBag.QtdRg == 0 && @ViewBag.QtdCpf == 0 && @ViewBag.QtdChh == 0)
+    {
+        <h2 class="title text-center">Não foi encontrado nenhum Usuario cadastrado</h2>
+    }
+    else
+    {
+
+        <h2 class="title text-center">Gráfico de Usuarios</h2>
+        <body>
+            <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+        </body>
+        <script type="text/javascript" src="~/Scripts/jsapi.js"></script>
+        <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Espaço Livre',   100],
+          ['Usuarios', @ViewBag.QtdUsuarios]
+          
+         
+
+        ]);
+
+        var options = {
+          title: 'Relatorio De Usuarios',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+        </script>
+
+    }
+
+
+
+    <h2 class="title text-center">Todos os Usuarios</h2>
+
+    using (Html.BeginForm())
+    {
+        <p>
+
+            Procure pelo nome do Usuario @Html.TextBox("procurar")
+            <input type="submit" value="Procurar" class="btn btn-default" />
+
+        </p>
+
+    }
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Nome Do Usuario")
+            </th>
+            
+            
+            <th>
+                @Html.DisplayName("E-Mail")
+            </th>
+
+            <th>
+                @Html.DisplayName("Data Do Cadastro")
+            </th>
+
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                
+             
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+
+                <td>
+@if (item.Bloquear == false)
+{
+    <a href="/UsuarioSystem/BloquearUsuario/@item.UsuarioId">&nbsp;&nbsp;&nbsp;&nbsp;<b>Bloquear</b></a>
+}
+else
+{
+    <a href="/UsuarioSystem/DesbloquearUsuario/@item.UsuarioId">&nbsp;&nbsp;&nbsp;&nbsp;<b>Desbloquear</b></a>
+}
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        Pagina @Model.PageNumber de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("RelatorioUser", new { pagina = page}))
+
+    </div>
+    
+    
+
+}
+else
+{
+    <h2 class="title text-center">Login Obrigatorio</h2>
+}
+
+
+
+
